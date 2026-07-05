@@ -1,0 +1,12 @@
+# Fish shell - 自动生成的临时/备份变量文件
+fish/fish_variables.*
+fish/fishd.tmp.*
+
+# 编辑器/备份文件
+*.bak
+
+# 自动生成的日志文件
+*.log
+
+# 数据库文件
+*.db

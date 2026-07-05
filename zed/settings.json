@@ -8,12 +8,16 @@
         "dock": "left",
     },
     "agent_servers": {
+        "opencode": {
+            "type": "registry"
+        },
         "qwen-code": {
             "type": "registry",
         },
     },
     "icon_theme": "Catppuccin Mocha", // 设定图标主题
     "edit_predictions": {
+        "mode": "eager",
         "provider": "zed", // 编辑预测提供程序
     },
     "outline_panel": {

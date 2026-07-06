@@ -1,0 +1,298 @@
+# =====================================================================
+# Ghostty 终端配置
+# =====================================================================
+# 终端：https://ghostty.org
+# 配置参考：https://ghostty.org/docs/configuration
+#
+# 本配置从 foot 迁移而来，适配 Kopf-dotfile 生态。
+# ▸ 显示环境：Niri (Arch Linux) / 备用 Hyprland
+# ▸ 终端 Shell：Fish
+# ▸ 主字体：Maple Mono NF CN (Nerd Font)
+#
+# 快捷键设计原则：
+#   - 避免与窗口管理器（Niri / Hyprland）的全局快捷键冲突
+#   - Ctrl+Shift+* 用于标准的复制/粘贴/全选
+#   - Alt+* 用于终端内单词跳转和标签页切换
+#   - Super+* 用于 Ghostty 特有的分屏/窗口操作
+# =====================================================================
+
+
+# =====================================================================
+# 字体
+# =====================================================================
+# Maple Mono NF CN — 带 Nerd Font 图标的等宽中文字体，
+# 配合 Noctalia 主题图标集使用效果最佳。
+font-family = Maple Mono NF CN
+font-size = 12
+
+# 微调行高，让中文字符显示更舒适
+adjust-cell-height = 2
+
+
+# =====================================================================
+# 16 色 ANSI 调色板
+# =====================================================================
+# 配色完全复刻自 foot 配置（foot/foot.ini），
+# 保持终端颜色在不同终端间的一致性。
+palette = 0=#000000
+palette = 1=#cc0403
+palette = 2=#19cb00
+palette = 3=#cecb00
+palette = 4=#0d73cc
+palette = 5=#cb1ed1
+palette = 6=#0dcdcd
+palette = 7=#dddddd
+palette = 8=#767676
+palette = 9=#f2201f
+palette = 10=#23fd00
+palette = 11=#fffd00
+palette = 12=#1a8fff
+palette = 13=#fd28ff
+palette = 14=#14ffff
+palette = 15=#ffffff
+
+
+# =====================================================================
+# 窗口外观
+# =====================================================================
+background = #000000
+background-opacity = 0.85
+# 注：Niri 不支持窗口模糊（blur），仅保留半透明效果；
+#     如换上 Hyprland，可添加 background-blur-radius = 30 开启毛玻璃
+
+window-padding-x = 3
+window-padding-y = 3
+
+# 自动保存/恢复窗口状态
+window-save-state = always
+window-theme = auto
+
+# macOS 专属，不影响 Linux
+macos-titlebar-style = transparent
+
+
+# =====================================================================
+# 光标样式
+# =====================================================================
+cursor-style = bar
+cursor-style-blink = true
+cursor-opacity = 0.8
+
+
+# =====================================================================
+# 鼠标与滚动
+# =====================================================================
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+
+# 滚动历史缓冲区大小（行数）
+scrollback-limit = 100000
+
+
+# =====================================================================
+# 快捷终端（Quake 式下拉终端）
+# =====================================================================
+quick-terminal-position = top
+quick-terminal-screen = mouse
+quick-terminal-autohide = true
+quick-terminal-animation-duration = 0.15
+
+
+# =====================================================================
+# 安全与隐私
+# =====================================================================
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+
+
+# =====================================================================
+# Shell 集成
+# =====================================================================
+# 开启后可利用 Ctrl+Up/Down 在命令提示符间跳转，
+# 以及在标签页标题中显示当前运行的命令。
+shell-integration = fish
+
+
+# =====================================================================
+# 快捷键总览
+# =====================================================================
+# 本配置已全面适配 Niri / Hyprland 窗口管理器快捷键，
+# 以下所有快捷键均不与 WM 全局键冲突。
+#
+# 修饰键：
+#   super = Windows/Command 键
+#   ctrl  = Ctrl 键
+#   alt   = Alt 键
+#   shift = Shift 键
+#
+# 键位分区：
+#   Alt+数字           → 切换标签页
+#   Ctrl+方向键         → 终端内控制/跳转
+#   Ctrl+Shift+字母     → 复制/粘贴/全选
+#   Super+字母          → 分屏/窗口/各种操作
+#   Super+Alt+字母      → 备用操作（避免与 WM 冲突）
+#   Ctrl+Tab            → 标签页左右切换
+# =====================================================================
+
+
+# ──────────────────────────────────────────────────────────────────
+# 一、页面滚动
+# ──────────────────────────────────────────────────────────────────
+# Niri 占用了 Super+PageUp/Down（切换工作区），
+# 所以滚动改用 Ctrl+Shift+PageUp/Down
+keybind = ctrl+shift+page_up=scroll_page_up
+keybind = ctrl+shift+page_down=scroll_page_down
+keybind = ctrl+home=scroll_to_top
+keybind = ctrl+end=scroll_to_bottom
+
+
+# ──────────────────────────────────────────────────────────────────
+# 二、分屏 Split 操作
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Super+D（Fuzzel）和 Super+[/]（窗口左右移动），
+# 所以分屏键避开这些组合。
+
+# 新分屏
+keybind = super+alt+d=new_split:right    # ←避开了 Niri Mod+D
+keybind = super+shift+d=new_split:down
+keybind = super+shift+enter=toggle_split_zoom
+keybind = super+ctrl+equal=equalize_splits
+
+# 分屏间跳转
+keybind = super+alt+up=goto_split:up
+keybind = super+alt+down=goto_split:down
+keybind = super+alt+left=goto_split:left
+keybind = super+alt+right=goto_split:right
+keybind = super+ctrl+left_bracket=goto_split:previous  # ←避开了 Niri Mod+[ ]
+keybind = super+ctrl+right_bracket=goto_split:next
+
+# 调整分屏大小
+keybind = super+ctrl+alt+up=resize_split:up,10
+keybind = super+ctrl+alt+down=resize_split:down,10
+keybind = super+ctrl+alt+left=resize_split:left,10
+keybind = super+ctrl+alt+right=resize_split:right,10
+
+
+# ──────────────────────────────────────────────────────────────────
+# 三、标签页管理
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Mod+T（启动 Ghostty）和 Mod+N（Nautilus），
+# 所以标签快捷键避开 Super+T/N，改用 Super+Ctrl+T/N。
+
+keybind = super+ctrl+t=new_tab
+
+# 标签页切换
+keybind = super+shift+left_bracket=previous_tab
+keybind = super+shift+right_bracket=next_tab
+keybind = ctrl+tab=next_tab
+keybind = ctrl+shift+tab=previous_tab
+
+# Alt+数字快速跳转到指定标签（1~9）
+# 注：Niri 用 Super+数字切换工作区，与 Alt+数字不冲突
+keybind = alt+physical:one=goto_tab:1
+keybind = alt+physical:two=goto_tab:2
+keybind = alt+physical:three=goto_tab:3
+keybind = alt+physical:four=goto_tab:4
+keybind = alt+physical:five=goto_tab:5
+keybind = alt+physical:six=goto_tab:6
+keybind = alt+physical:seven=goto_tab:7
+keybind = alt+physical:eight=goto_tab:8
+keybind = alt+physical:nine=last_tab  # 按 Alt+9 跳回最后一个标签
+
+
+# ──────────────────────────────────────────────────────────────────
+# 四、窗口 / 关闭操作
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Mod+Q（关闭窗口）和 Mod+W 未使用，
+# Ghostty 用 Super+W 关闭分屏/标签/窗口，并用 Super+Ctrl+N 新建窗口。
+keybind = super+ctrl+n=new_window
+keybind = super+w=close_surface       # 关闭当前分屏/面板
+keybind = super+alt+w=close_tab       # 关闭当前标签
+keybind = super+shift+w=close_window  # 关闭整个窗口
+keybind = super+alt+shift+w=close_all_windows
+keybind = super+ctrl+q=quit           # 退出 Ghostty 程序
+
+
+# ──────────────────────────────────────────────────────────────────
+# 五、字体大小调节
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Mod+Equal（特殊工作区），Mod+Minus 未用到。
+# 使用 Super+Plus 放大（Plus = Shift+Equal，和 Niri 的 Equal 不是一个键）。
+keybind = super+plus=increase_font_size:1
+keybind = super+ctrl+minus=decrease_font_size:1
+keybind = super+ctrl+zero=reset_font_size
+
+
+# ──────────────────────────────────────────────────────────────────
+# 六、命令提示符跳转
+# ──────────────────────────────────────────────────────────────────
+# 需要开启 shell-integration = fish
+# Niri 用 Super+方向键移动焦点，故改用 Ctrl+方向键。
+keybind = ctrl+up=jump_to_prompt:-1   # 跳到上一个命令提示符
+keybind = ctrl+down=jump_to_prompt:1  # 跳到下一个命令提示符
+
+
+# ──────────────────────────────────────────────────────────────────
+# 七、文本选区扩展
+# ──────────────────────────────────────────────────────────────────
+# 按住 Shift + 方向键扩展当前文本选择区域。
+# 这些组合与 Niri/Hyprland 无冲突。
+keybind = shift+up=adjust_selection:up
+keybind = shift+down=adjust_selection:down
+keybind = shift+left=adjust_selection:left
+keybind = shift+right=adjust_selection:right
+keybind = shift+page_up=adjust_selection:page_up
+keybind = shift+page_down=adjust_selection:page_down
+keybind = shift+home=adjust_selection:home
+keybind = shift+end=adjust_selection:end
+
+
+# ──────────────────────────────────────────────────────────────────
+# 八、复制 / 粘贴 / 全选
+# ──────────────────────────────────────────────────────────────────
+# 使用标准的 Ctrl+Shift+C/V/A（与 foot 习惯一致）。
+# Niri 的 Mod+V 是切换浮动，Mod+A 未用，
+# 但 Ctrl+Shift+* 是三层组合键，与 Niri 无冲突。
+keybind = ctrl+shift+a=select_all
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = super+ctrl+v=paste_from_selection  # 从主剪贴板粘贴（鼠标中键）
+
+
+# ──────────────────────────────────────────────────────────────────
+# 九、配置 / 调试 / 全屏
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Mod+Comma（设置）和 Mod+Return（终端），
+# 故这些键加上 Alt 避开冲突。
+keybind = super+alt+comma=open_config        # 快速编辑配置
+keybind = super+shift+comma=reload_config     # 重载配置（不用重启）
+keybind = super+alt+i=inspector:toggle        # 调试检查器
+keybind = super+alt+enter=toggle_fullscreen   # ←避开了 Niri Mod+Return
+keybind = super+ctrl+f=toggle_fullscreen      # 备选全屏键
+
+
+# ──────────────────────────────────────────────────────────────────
+# 十、终端清屏
+# ──────────────────────────────────────────────────────────────────
+# Niri 用了 Mod+K（聚焦窗口上移），故避开。
+keybind = super+alt+k=clear_screen
+
+
+# ──────────────────────────────────────────────────────────────────
+# 十一、终端内光标控制
+# ──────────────────────────────────────────────────────────────────
+# 光标单词跳转（在命令行中按 Alt+方向键 跳单词）
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+
+# 终端控制字符（行首/行尾）—— Niri 用 Super+方向键，改用 Ctrl
+keybind = ctrl+left=text:\x01    # Ctrl+A (行首)
+keybind = ctrl+right=text:\x05   # Ctrl+E (行尾)
+keybind = super+backspace=text:\x15  # Ctrl+U (删除整行)
+
+
+# ──────────────────────────────────────────────────────────────────
+# 十二、终端内容保存导出
+# ──────────────────────────────────────────────────────────────────
+keybind = super+alt+shift+j=write_screen_file:open   # 保存并打开
+keybind = super+shift+j=write_screen_file:paste       # 保存到剪贴板

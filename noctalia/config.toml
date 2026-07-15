@@ -107,7 +107,7 @@ community_ids              = []
 # ── Backdrop ──────────────────────────────────────────────────────────────────
 
 [backdrop]
-enabled        = true
+enabled        = false
 blur_intensity = 0.6
 tint_intensity = 0.3
 

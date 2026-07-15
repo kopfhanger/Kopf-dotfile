@@ -67,16 +67,14 @@ window-padding-y = 3
 window-save-state = always
 window-theme = auto
 
-# macOS 专属，不影响 Linux
-macos-titlebar-style = transparent
-
-
 # =====================================================================
 # 光标样式
 # =====================================================================
-cursor-style = bar
+cursor-style = block
 cursor-style-blink = true
 cursor-opacity = 0.8
+# 禁用 Shell 集成对光标样式的覆盖
+shell-integration-features = no-cursor
 
 
 # =====================================================================
@@ -153,7 +151,7 @@ keybind = ctrl+end=scroll_to_bottom
 # 所以分屏键避开这些组合。
 
 # 新分屏
-keybind = super+alt+d=new_split:right    # ←避开了 Niri Mod+D
+keybind = super+alt+d=new_split:right
 keybind = super+shift+d=new_split:down
 keybind = super+shift+enter=toggle_split_zoom
 keybind = super+ctrl+equal=equalize_splits
@@ -163,7 +161,7 @@ keybind = super+alt+up=goto_split:up
 keybind = super+alt+down=goto_split:down
 keybind = super+alt+left=goto_split:left
 keybind = super+alt+right=goto_split:right
-keybind = super+ctrl+left_bracket=goto_split:previous  # ←避开了 Niri Mod+[ ]
+keybind = super+ctrl+left_bracket=goto_split:previous
 keybind = super+ctrl+right_bracket=goto_split:next
 
 # 调整分屏大小
@@ -197,7 +195,7 @@ keybind = alt+physical:five=goto_tab:5
 keybind = alt+physical:six=goto_tab:6
 keybind = alt+physical:seven=goto_tab:7
 keybind = alt+physical:eight=goto_tab:8
-keybind = alt+physical:nine=last_tab  # 按 Alt+9 跳回最后一个标签
+keybind = alt+physical:nine=last_tab
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -206,11 +204,11 @@ keybind = alt+physical:nine=last_tab  # 按 Alt+9 跳回最后一个标签
 # Niri 用了 Mod+Q（关闭窗口）和 Mod+W 未使用，
 # Ghostty 用 Super+W 关闭分屏/标签/窗口，并用 Super+Ctrl+N 新建窗口。
 keybind = super+ctrl+n=new_window
-keybind = super+w=close_surface       # 关闭当前分屏/面板
-keybind = super+alt+w=close_tab       # 关闭当前标签
-keybind = super+shift+w=close_window  # 关闭整个窗口
+keybind = super+w=close_surface
+keybind = super+alt+w=close_tab
+keybind = super+shift+w=close_window
 keybind = super+alt+shift+w=close_all_windows
-keybind = super+ctrl+q=quit           # 退出 Ghostty 程序
+keybind = super+ctrl+q=quit
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -228,8 +226,8 @@ keybind = super+ctrl+zero=reset_font_size
 # ──────────────────────────────────────────────────────────────────
 # 需要开启 shell-integration = fish
 # Niri 用 Super+方向键移动焦点，故改用 Ctrl+方向键。
-keybind = ctrl+up=jump_to_prompt:-1   # 跳到上一个命令提示符
-keybind = ctrl+down=jump_to_prompt:1  # 跳到下一个命令提示符
+keybind = ctrl+up=jump_to_prompt:-1
+keybind = ctrl+down=jump_to_prompt:1
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -256,7 +254,7 @@ keybind = shift+end=adjust_selection:end
 keybind = ctrl+shift+a=select_all
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
-keybind = super+ctrl+v=paste_from_selection  # 从主剪贴板粘贴（鼠标中键）
+keybind = super+ctrl+v=paste_from_selection
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -264,11 +262,11 @@ keybind = super+ctrl+v=paste_from_selection  # 从主剪贴板粘贴（鼠标中
 # ──────────────────────────────────────────────────────────────────
 # Niri 用了 Mod+Comma（设置）和 Mod+Return（终端），
 # 故这些键加上 Alt 避开冲突。
-keybind = super+alt+comma=open_config        # 快速编辑配置
-keybind = super+shift+comma=reload_config     # 重载配置（不用重启）
-keybind = super+alt+i=inspector:toggle        # 调试检查器
-keybind = super+alt+enter=toggle_fullscreen   # ←避开了 Niri Mod+Return
-keybind = super+ctrl+f=toggle_fullscreen      # 备选全屏键
+keybind = super+alt+comma=open_config
+keybind = super+shift+comma=reload_config
+keybind = super+alt+i=inspector:toggle
+keybind = super+alt+enter=toggle_fullscreen
+keybind = super+ctrl+f=toggle_fullscreen
 
 
 # ──────────────────────────────────────────────────────────────────
@@ -286,13 +284,22 @@ keybind = alt+left=esc:b
 keybind = alt+right=esc:f
 
 # 终端控制字符（行首/行尾）—— Niri 用 Super+方向键，改用 Ctrl
-keybind = ctrl+left=text:\x01    # Ctrl+A (行首)
-keybind = ctrl+right=text:\x05   # Ctrl+E (行尾)
-keybind = super+backspace=text:\x15  # Ctrl+U (删除整行)
+# Ctrl+A (行首)
+keybind = ctrl+left=text:\x01
+# Ctrl+E (行尾)
+keybind = ctrl+right=text:\x05
+# Ctrl+U (删除整行)
+keybind = super+backspace=text:\x15
 
 
 # ──────────────────────────────────────────────────────────────────
 # 十二、终端内容保存导出
 # ──────────────────────────────────────────────────────────────────
-keybind = super+alt+shift+j=write_screen_file:open   # 保存并打开
-keybind = super+shift+j=write_screen_file:paste       # 保存到剪贴板
+# 保存并打开
+keybind = super+alt+shift+j=write_screen_file:open
+# 保存到剪贴板
+keybind = super+shift+j=write_screen_file:paste
+
+# 其他
+# quit-after-last-window-closed = false
+# gtk-single-instance = true

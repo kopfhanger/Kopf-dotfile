@@ -67,13 +67,11 @@ workspace "c" { }
 
 // ================ Noctalia 窗口规则 ================
 
-// 默认窗口规则（含背景模糊）
+// 默认窗口规则
 window-rule {
     // 圆角设置
     geometry-corner-radius 15
     clip-to-geometry true
-    // 背景模糊（对透明窗口生效，需 ext-background-effect 协议）
-    blur { }
 }
 
 // 调试/激活设置
@@ -87,7 +85,6 @@ window-rule {
     match title="Firefox"
     open-on-workspace "c"
     open-maximized true
-    blur { }
 }
 
 // ================ 近期窗口 ================

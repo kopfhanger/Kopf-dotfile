@@ -37,8 +37,8 @@ overview {
 
 // ================ 启动时自动运行的程序 ================
 // Noctalia 启动项 (Arch Linux 适配)
-spawn-at-startup "qs" "-c" "noctalia-shell"
-spawn-at-startup "utools" "-d"
+spawn-at-startup "noctalia" "--daemon"
+// spawn-at-startup "utools" "-d"
 
 // ================ 环境变量设置 ================
 environment {
@@ -67,11 +67,13 @@ workspace "c" { }
 
 // ================ Noctalia 窗口规则 ================
 
-// 默认窗口规则
+// 默认窗口规则（含背景模糊）
 window-rule {
     // 圆角设置
     geometry-corner-radius 15
     clip-to-geometry true
+    // 背景模糊（对透明窗口生效，需 ext-background-effect 协议）
+    blur { }
 }
 
 // 调试/激活设置
@@ -85,6 +87,7 @@ window-rule {
     match title="Firefox"
     open-on-workspace "c"
     open-maximized true
+    blur { }
 }
 
 // ================ 近期窗口 ================

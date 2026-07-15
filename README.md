@@ -9,10 +9,10 @@
 | **OS**    | CachyOS (Arch Linux 衍生)                    |
 | **WM**    | Niri (滚动式平铺合成器)                      |
 | **Shell** | Fish                                         |
-| **终端**  | Ghostty (主力) + Foot (备用)                 |
-| **主题**  | Noctalia                                     |
+| **终端**  | Foot (主力) + Ghostty (备选)                 |
+| **主题**  | Noctalia v5 (原 noctalia-shell v4 已存档)      |
 | **字体**  | Maple Mono NF CN (Nerd Font)                 |
-| **配色**  | Catppuccin / Cyberpunk 等多套 (via Noctalia) |
+| **配色**  | 内置多套配色方案 (via Noctalia)               |
 
 ## 📁 配置一览
 
@@ -28,19 +28,20 @@
 
 | 目录         | 说明                                          |
 | ------------ | --------------------------------------------- |
-| `ghostty/`   | **主力终端** — GPU 加速终端，配置自 foot 迁移 |
-| `foot/`      | 备用终端 — CPU 渲染，轻量快速                 |
-| `kitty/`     | 备选终端 — 含 kitty-themes 主题包             |
-| `alacritty/` | 备选终端 — OpenGL 加速                        |
+| `foot/`      | **主力终端** — CPU 渲染，轻量快速                 |
+| `ghostty/`   | 备选终端 — GPU 加速，配置自 foot 迁移 |
+| `wezterm/`   | 备选终端 — GPU 加速，Lua 配置，支持连字            |
+| `kitty/`     | 备选终端 — 含 kitty-themes 主题包                 |
+| `alacritty/` | 备选终端 — OpenGL 加速                            |
 
 ### 主题与外观
 
 | 目录          | 说明                                          |
 | ------------- | --------------------------------------------- |
-| `noctalia/`   | 主题管理面板，含 16 套配色方案及多个插件      |
+| `noctalia/`    | **Noctalia v5** TOML 配置 (独立二进制，非 quickshell) |
 | `fastfetch/`  | 系统信息展示 (带自定义 ASCII logo)            |
 | `fontconfig/` | 字体渲染配置                                  |
-| `waybar/`     | 状态栏 (Hyprland 用，Niri 下由 Noctalia 代替) |
+| `waybar/`     | 状态栏 (Hyprland 用，Niri 下由 Noctalia bar 代替)  |
 
 ### Shell
 
@@ -67,9 +68,10 @@
 
 ### 其他
 
-| 目录     | 说明                            |
-| -------- | ------------------------------- |
-| `nixos/` | NixOS 配置 (flake 模块化，存档) |
+| 目录          | 说明                            |
+| ------------- | ------------------------------- |
+| `noctalia_v4/` | Noctalia v4 配置存档 (JSON/QML，待 v5 稳定后清除) |
+| `nixos/`      | NixOS 配置 (flake 模块化，已存档) |
 
 ## 🔧 快速部署
 
@@ -86,6 +88,9 @@
     ```bash
     # 窗口管理器
     ln -sfn ~/workspace/Kopf-dotfile/niri_arch  ~/.config/niri
+
+    # Noctalia
+    ln -sfn ~/workspace/Kopf-dotfile/noctalia   ~/.config/noctalia
 
     # 终端
     ln -sfn ~/workspace/Kopf-dotfile/ghostty    ~/.config/ghostty
@@ -128,4 +133,5 @@
 ## 📝 备注
 
 - `niri_arch/` 是当前活跃的 WM 配置，`hyprland/` 作为储备保留
+- `noctalia/` 是 v5 配置 (TOML 格式)，旧版 v4 JSON 配置已存档于 `noctalia_v4/`
 - 所有配置文件的注释均中文化，方便查阅

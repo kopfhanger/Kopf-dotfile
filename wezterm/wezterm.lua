@@ -32,7 +32,7 @@ config.background = {
     },
 }
 config.window_background_opacity = 0.85
-config.window_background_blur = true
+config.wayland_window_background_blur = true
 
 -- 窗口内边距
 config.window_padding = {

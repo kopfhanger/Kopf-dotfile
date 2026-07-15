@@ -23,14 +23,8 @@ config.font_size = 12.0
 -- 窗口外观
 -- =====================================================================
 -- 背景色（复刻 foot: background=000000, alpha=0.85）
--- 背景模糊（需要 compositor 支持 ext-background-effect）
-config.background = {
-    {
-        source = {
-            Color = '#000000',
-        },
-    },
-}
+-- 背景模糊（通过 colors.background + opacity + wayland blur 配合）
+-- 注：不使用 config.background 图层（会和 blur 冲突）
 config.window_background_opacity = 0.85
 config.wayland_window_background_blur = true
 

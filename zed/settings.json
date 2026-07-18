@@ -128,6 +128,15 @@
         "Rust": {
             "show_edit_predictions": true,
         },
+        "Typst": {
+            "show_edit_predictions": true,
+            "format_on_save": "on",
+            "formatter": {
+                "language_server": {
+                    "name": "tinymist",
+                },
+            },
+        },
         "C": {
             "show_edit_predictions": true,
             "formatter": {
@@ -281,6 +290,14 @@
                 },
                 "bibtexFormatter": "texlab",
                 "formatterLineLength": 80,
+            },
+        },
+        "tinymist": {
+            "initialization_options": {
+                "exportPdf": "onSave",
+                "formatterMode": "tinymist",
+                "semanticTokens": "enable",
+                "systemFonts": true,
             },
         },
     },

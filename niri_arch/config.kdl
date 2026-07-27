@@ -87,6 +87,14 @@ window-rule {
     open-maximized true
 }
 
+// rio 窗口规则
+window-rule {
+    match app-id="^rio$"
+    background-effect {
+        blur true
+    }
+}
+
 // ================ 近期窗口 ================
 recent-windows {
     // off

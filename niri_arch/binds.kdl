@@ -2,7 +2,7 @@
 binds {
     // -------- 启动器与系统应用 --------
     Mod+Return hotkey-overlay-title="打开 (Foot)" { spawn "foot"; }
-    Mod+T hotkey-overlay-title="打开 (WezTerm)" { spawn "wezterm"; }
+    Mod+T hotkey-overlay-title="打开 (Rio)" { spawn "rio"; }
     Mod+D hotkey-overlay-title="Fuzzel" { spawn-sh "fuzzel --config ~/.config/fuzzel/themes/noctalia"; }
     Mod+B hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
     Mod+N hotkey-overlay-title="nautilus" { spawn "nautilus"; }

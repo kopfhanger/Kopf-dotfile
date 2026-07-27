@@ -1,0 +1,40 @@
+# See the full configuration reference: https://rioterm.com/docs/config
+
+confirm-before-quit = false
+env-vars = []
+
+[editor]
+program = "nvim"
+
+[cursor]
+blinking = true
+blinking-interval = 500
+
+[effects]
+trail-cursor = true
+
+[fonts]
+size = 16
+family = "Maple Mono NF CN"
+
+[window]
+opacity = 0.85
+blur = true
+
+[colors]
+background = '#000000'
+foreground  = '#dddddd'
+
+black = '#000000'
+blue = '#0d73cc'
+cyan = '#0dcdcd'
+green = '#19cb00'
+magenta = '#cb1ed1'
+red = '#cc0403'
+white = '#F1F1F1'
+yellow = '#cecb00'
+
+
+cursor = '#dddddd'
+selection-foreground = '#000000'
+selection-background = '#dddddd'

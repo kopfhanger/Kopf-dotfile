@@ -8,7 +8,7 @@
     },
     "agent_servers": {
         "opencode": {
-            "type": "registry"
+            "type": "registry",
         },
         "qwen-code": {
             "type": "registry",
@@ -267,7 +267,8 @@
                             "-file-line-error",
                             "-interaction=nonstopmode",
                             "-synctex=1",
-                            "%f",
+                            "-f",
+                            "-g",
                         ],
                         "onSave": true,
                         "forwardSearchAfter": true,

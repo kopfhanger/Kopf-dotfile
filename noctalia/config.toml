@@ -13,7 +13,6 @@ telemetry_enabled      = false
 clipboard_enabled      = true
 clipboard_history_max_entries = 100
 clipboard_image_action_command = ""
-middle_click_opens_widget_settings = true
 settings_show_advanced = false
 
 # lang                  = "zh-CN"
@@ -36,8 +35,8 @@ alpha     = 0.55
 transparency_mode       = "glass"
 borders                 = true
 shadow                  = true
-launcher_placement       = "centered"
-clipboard_placement      = "centered"
+launcher_placement       = "floating"
+clipboard_placement      = "floating"
 control_center_placement = "attached"
 wallpaper_placement      = "attached"
 session_placement        = "attached"
@@ -86,7 +85,7 @@ path = ""
 
 [wallpaper.automation]
 enabled          = false
-interval_minutes = 0
+interval_seconds = 0
 order            = "random"
 recursive        = true
 
@@ -198,7 +197,7 @@ temperature_night    = 4000
 
 [location]
 auto_locate = true
-use12hour   = false
+# use12hour was removed in v5
 
 # ── Idle ──────────────────────────────────────────────────────────────────────
 
@@ -231,8 +230,8 @@ position           = "top"
 thickness          = 34
 background_opacity = 0.93
 radius             = 12
-margin_h           = 5
-margin_v           = 5
+margin_ends        = 5
+margin_edge        = 5
 padding            = 2
 widget_spacing     = 6
 scale              = 1.0
@@ -242,7 +241,7 @@ reserve_space      = true
 capsule            = true
 capsule_opacity    = 1.0
 
-start  = ["launcher", "wallpaper", "workspaces", "clock", "system-monitor", "active-window", "media"]
+start  = ["launcher", "wallpaper", "workspaces", "clock", "sysmon", "active_window", "media"]
 center = []
 end    = ["tray", "notifications", "battery", "volume", "brightness", "control-center", "session"]
 
@@ -255,13 +254,9 @@ custom_image_colorize = false
 # ── Widget: Workspaces ────────────────────────────────────────────────────────
 
 [widget.workspaces]
-label_mode              = "index"
-show_applications       = false
-show_badge              = true
-show_labels_only_when_occupied = true
-enable_scroll_wheel     = true
-pill_size               = 0.6
-font_weight             = "bold"
+display                 = "id"
+labels_only_when_occupied = true
+pill_scale              = 0.6
 focused_color           = "primary"
 occupied_color          = "secondary"
 empty_color             = "secondary"
@@ -275,37 +270,23 @@ font_weight    = 400
 
 # ── Widget: System Monitor ────────────────────────────────────────────────────
 
-[widget.system-monitor]
-show_cpu_usage     = true
-show_cpu_temp      = true
-show_memory_usage  = true
-show_memory_as_percent = true
-show_network_stats = true
-show_disk_usage    = true
-use_monospace_font = true
-compact_mode       = false
+[widget.sysmon]
+stat        = "cpu_usage"
 
 # ── Widget: Active Window ─────────────────────────────────────────────────────
 
-[widget.active-window]
-max_width         = 145
-show_icon         = true
-show_text         = true
-scrolling_mode    = "hover"
+[widget.active_window]
+# active_window widget uses v5 defaults
 
 # ── Widget: Media ─────────────────────────────────────────────────────────────
 
 [widget.media]
-max_width          = 145
-show_artist_first  = true
-show_progress_ring = true
-scrolling_mode     = "hover"
-compact_mode       = false
+# v5 media widget has no TOML-configurable settings — defaults are used
 
 # ── Widget: Tray ──────────────────────────────────────────────────────────────
 
 [widget.tray]
-drawer_enabled = true
+drawer = true
 pinned = []
 
 # ── Widget: Notifications ─────────────────────────────────────────────────────
@@ -316,19 +297,19 @@ hide_when_no_unread = true
 # ── Widget: Battery ───────────────────────────────────────────────────────────
 
 [widget.battery]
-hide_if_not_detected = true
-display_mode = "onhover"
+# Widget: Battery uses show_label only
+# hide_if_not_detected and display_mode are not v5 settings
 
 # ── Widget: Volume ────────────────────────────────────────────────────────────
 
 [widget.volume]
-display_mode = "onhover"
-middle_click_command = "pwvucontrol || pavucontrol"
+show_label = true
+# display_mode and middle_click_command are not v5 settings
 
 # ── Widget: Brightness ────────────────────────────────────────────────────────
 
 [widget.brightness]
-display_mode = "onhover"
+# display_mode removed — not a v5 brightness setting
 
 # ── Widget: Control Center ────────────────────────────────────────────────────
 
@@ -344,8 +325,8 @@ position            = "bottom"
 icon_size           = 48
 background_opacity  = 1.0
 radius              = 6
-margin_h            = 0
-margin_v            = 0
+main_axis_padding   = 0
+cross_axis_padding  = 0
 shadow              = true
 show_running        = true
 auto_hide           = true
@@ -390,4 +371,4 @@ type = "nightlight"
 # ── Hooks ─────────────────────────────────────────────────────────────────────
 
 [hooks]
-battery_low_percent_threshold = 0
+# battery_low_percent_threshold was removed in v5 — use hooks.battery_percentage_changed instead

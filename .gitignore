@@ -11,3 +11,5 @@ fish/fishd.tmp.*
 # 数据库文件
 *.db
 rio/.ferrite/
+
+.reasonix

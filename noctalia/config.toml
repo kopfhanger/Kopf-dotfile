@@ -1,6 +1,6 @@
 # Noctalia v5 配置文件
-# 从 v4 (noctalia-shell) 移植，2025-07
-# 参考: https://docs.noctalia.dev/v5/
+# 从 v4 (noctalia-shell) 移植，2025-07；已适配 5.0.0_beta.8（2026-08）
+# 参考: https://docs.noctalia.dev/noctalia/
 
 # ── Shell ─────────────────────────────────────────────────────────────────────
 
@@ -254,7 +254,8 @@ custom_image_colorize = false
 # ── Widget: Workspaces ────────────────────────────────────────────────────────
 
 [widget.workspaces]
-display                 = "id"
+label_source            = "id"
+show_labels             = true
 labels_only_when_occupied = true
 pill_scale              = 0.6
 focused_color           = "primary"
@@ -281,7 +282,7 @@ stat        = "cpu_usage"
 # ── Widget: Media ─────────────────────────────────────────────────────────────
 
 [widget.media]
-# v5 media widget has no TOML-configurable settings — defaults are used
+# v5 可配置: art_size / min_length / max_length / title_scroll
 
 # ── Widget: Tray ──────────────────────────────────────────────────────────────
 
@@ -297,19 +298,18 @@ hide_when_no_unread = true
 # ── Widget: Battery ───────────────────────────────────────────────────────────
 
 [widget.battery]
-# Widget: Battery uses show_label only
-# hide_if_not_detected and display_mode are not v5 settings
+# v5 可配置: type
 
 # ── Widget: Volume ────────────────────────────────────────────────────────────
 
 [widget.volume]
 show_label = true
-# display_mode and middle_click_command are not v5 settings
+# v5 可配置: type / device（output_volume、input_volume 为按设备实例）
 
 # ── Widget: Brightness ────────────────────────────────────────────────────────
 
 [widget.brightness]
-# display_mode removed — not a v5 brightness setting
+# v5 可配置: type
 
 # ── Widget: Control Center ────────────────────────────────────────────────────
 

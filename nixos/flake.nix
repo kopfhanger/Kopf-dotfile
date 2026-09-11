@@ -1,18 +1,14 @@
 {
-  description = "使用 Noctalia 的 NixOS 配置";
+  description = "NixOS 26.11pre 配置：GDM、GNOME、Niri 与 Noctalia v5";
 
   inputs = {
-   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-   quickshell = {
-     url = "github:outfoxxed/quickshell";
-     inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixos-unstable 当前为 NixOS 26.11pre 开发线；官方 tarball 便于在受限网络中更新。
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
 
     noctalia = {
-     url = "github:noctalia-dev/noctalia-shell";
-     inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.quickshell.follows = "quickshell";
+      # v5 已迁移到独立仓库，不再依赖 quickshell/noctalia-shell。
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
@@ -20,25 +16,27 @@
      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
-
-   home-manager= {
-     url = "github:nix-community/home-manager/master";
-     inputs.nixpkgs.follows = "nixpkgs";
+    nixos-grub-themes = {
+      url = "github:jeslie0/nixos-grub-themes";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-   nix-wpsoffice-cn.url = "github:Beriholic/nix-wpsoffice-cn";
+    home-manager = {
+      # Home Manager 的稳定发布线目前是 26.05；它可以与 NixOS 26.11pre 共存。
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-wpsoffice-cn = {
+      url = "github:Beriholic/nix-wpsoffice-cn";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, zen-browser, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, zen-browser, home-manager, ... }:
   let
-    lib = nixpkgs.lib;
-   system = "x86_64-linux";
+    system = "x86_64-linux";
 
-    # 自动生成模块列表
-   generatedModules = lib.map (file: ./modules/${file})
-      (lib.filter (file: lib.hasSuffix ".nix" file)
-        (builtins.attrNames (builtins.readDir ./modules)));
   in
   {
    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -50,13 +48,21 @@
         ./configuration.nix
 
         # Home Manager 配置
-       home-manager.nixosModules.home-manager
+        home-manager.nixosModules.home-manager
         {
          home-manager.useGlobalPkgs = true;
          home-manager.useUserPackages = true;
+          home-manager.sharedModules = [ inputs.noctalia.homeModules.default ];
          home-manager.users.kopfhanger = import ./home.nix;
          home-manager.extraSpecialArgs = inputs;
         }
+
+        # 显式列出系统模块，避免新增文件被动态导入后产生未审查的系统变更。
+        ./modules/chinese.nix
+        ./modules/niri.nix
+        ./modules/nvidia.nix
+        ./modules/programs.nix
+        ./modules/virtualization.nix
 
         # Zen Browser 和中文字体
         ({ pkgs, ... }: {
@@ -69,7 +75,7 @@
            inputs.nix-wpsoffice-cn.packages.${system}.chinese-fonts
           ];
         })
-      ] ++ generatedModules;
+      ];
     };
   };
 }

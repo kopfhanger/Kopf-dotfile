@@ -21,7 +21,7 @@
 | 目录         | 说明                                                      |
 | ------------ | --------------------------------------------------------- |
 | `niri_arch/` | **当前主力** — Niri 配置 (Arch Linux + Noctalia 适配版)   |
-| `niri_nix/`  | Niri 配置 (NixOS 版，存档)                                |
+| `niri_nix/`  | Niri 配置 (NixOS 26.11pre + Noctalia v5)                  |
 | `misc/hyprland/`  | **储备** — Hyprland 配置 (模块化，含全套动画/装饰/键绑定) |
 
 ### 终端
@@ -71,7 +71,7 @@
 | 目录          | 说明                            |
 | ------------- | ------------------------------- |
 | `misc/noctalia_v4/` | Noctalia v4 配置存档 (JSON/QML，待 v5 稳定后清除) |
-| `nixos/`      | NixOS 配置 (flake 模块化，已存档) |
+| `nixos/`      | NixOS 26.11pre 配置 (GDM + GNOME/Niri，Home Manager 26.05) |
 
 ## 🔧 快速部署
 

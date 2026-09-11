@@ -100,8 +100,11 @@
     shell = pkgs.fish;
   };
 
-  # Wayland 专用配置
-  services.xserver.displayManager.gdm.wayland = true;
+  # GNOME 与 Niri 共存；GDM 会在登录界面提供两个 Wayland 会话。
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "niri";
+
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     APPIMAGE_EXTRACT_AND_RUN = "1";
@@ -139,7 +142,6 @@
     fishPlugins.pure
     adw-gtk3
     adwaita-qt
-    sddm-astronaut
     xwayland-satellite
     onedrive
     wineWow64Packages.waylandFull
@@ -156,16 +158,16 @@
   # 自动系统更新
   system.autoUpgrade = {
     enable = true;
-    channel = "https://channels.nixos.org/nixos-unstable";
-  flags = [ "--update-input" "nixpkgs" ];
-  allowReboot = false;
+    flake = "/etc/nixos";
+    flags = [ "--update-input" "nixpkgs" ];
+    allowReboot = false;
   };
 
   # Nix 垃圾回收和优化
   nix.gc = {
     automatic = true;
     dates = "weekly";
-  options = "--delete-older-than 7d";
+    options = "--delete-older-than 7d";
   };
 
   nix.settings = {
@@ -176,7 +178,7 @@
       "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
       "https://cache.nixos.org/"
     ];
-  experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   # 一些程序需要 SUID 包装器，可以进一步配置或在用户会话中启动。
@@ -185,17 +187,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  programs.fish.enable = true;
-  programs.nix-ld.enable = true;
-  programs.thunar.enable = true;
-  programs.zoxide.enable = true;
-  programs.neovim.enable = true;
-  programs.yazi.enable = true;
-  programs.nautilus-open-any-terminal = {
-   enable = true;
-   terminal = "foot";
-  };
-  programs.steam.enable = true;
   programs.appimage = {
    enable = true;
    binfmt = true;
@@ -206,6 +197,8 @@
 
   # 列出您要启用的服务：
   services.dbus.enable = true;
+  # 26.05 起默认实现已切换为 Broker，这里显式声明以固定系统行为。
+  services.dbus.implementation = "broker";
   services.udisks2.enable = true;
   services.v2raya.enable = true;
   services.gvfs.enable = true;
@@ -217,14 +210,6 @@
   # services.openssh.enable = true;
 
   services.xserver.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-astronaut-theme";
-    extraPackages = with pkgs; [
-      qt6.qtmultimedia
-    ];
-  };
   # 使用 Pipewire 启用声音。
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -245,10 +230,7 @@
   # 或者完全禁用防火墙.
   # networking.firewall.enable = false;
 
-  # 此值决定了从哪个 NixOS 版本获取默认的状态数据设置，
-  # 例如文件位置和数据库版本。将此值保留为首次安装此系统的版本是完全没问题的，也是推荐的。
-  # 在更改此值之前，请阅读此选项的文档
-  # （例如 man configuration.nix 或访问 https://nixos.org/nixos/options.html）。
-  system.stateVersion = "25.11"; # 您阅读了上面的注释吗？
+  # 该主机按 NixOS 26.11pre 的状态默认值维护；Home Manager 的状态版本单独为 26.05。
+  system.stateVersion = "26.11";
 
 }

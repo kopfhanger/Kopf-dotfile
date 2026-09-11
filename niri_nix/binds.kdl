@@ -8,11 +8,11 @@ binds {
     Mod+N hotkey-overlay-title="nautilus" { spawn "nautilus"; }
     Alt+J hotkey-overlay-title="区域截图" { spawn-sh "grim -g \"$(slurp)\" - | satty -f - --initial-tool=line --copy-command=wl-copy --actions-on-escape save-to-clipboard,exit --brush-smooth-history-size=5 --output-filename ~/$(date '+%Y%m%d-%H:%M:%S').png"; }
 
-    // -------- Noctalia 特有绑定 --------
-    Mod+S hotkey-overlay-title="控制面板" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    Mod+Comma hotkey-overlay-title="设置" { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
-    Super+Alt+L hotkey-overlay-title="锁屏" { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-    Mod+Space hotkey-overlay-title="应用启动器" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    // -------- Noctalia v5 绑定 --------
+    Mod+S hotkey-overlay-title="控制面板" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Comma hotkey-overlay-title="设置" { spawn-sh "noctalia msg settings-open"; }
+    Super+Alt+L hotkey-overlay-title="锁屏" { spawn-sh "noctalia msg session lock"; }
+    Mod+Space hotkey-overlay-title="应用启动器" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Shift+Slash hotkey-overlay-title="捷键概览" { show-hotkey-overlay; }
 
     // -------- 焦点移动（HJKL / 方向键） --------

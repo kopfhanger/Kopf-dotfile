@@ -10,6 +10,7 @@
   # 系统级包已统一到 configuration.nix 的 environment.systemPackages
   # 此处仅保留程序启用配置
 
+ programs.fish.enable = true;
  programs.nix-ld.enable = true;
  programs.thunar.enable = true;
  programs.zoxide.enable = true;     # z 跳转

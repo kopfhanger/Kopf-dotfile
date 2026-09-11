@@ -4,6 +4,17 @@
   home.username = "kopfhanger";
   home.homeDirectory = "/home/kopfhanger";
 
+  # 让 NixOS 的 Niri 会话直接使用仓库中的模块化配置。
+  home.file.".config/niri".source = ../niri_nix;
+
+  # Noctalia v5 由 Home Manager 管理配置和包；仅在 Niri 会话中由 KDL 启动，
+  # 因此登录 GNOME 时不会额外启动一套 shell。
+  programs.noctalia = {
+    enable = true;
+    systemd.enable = false;
+    settings = ../noctalia/config.toml;
+  };
+
   home.packages = with pkgs;[
     appimage-run      # AppImage运行器
     nautilus          # 文件管理器
@@ -103,5 +114,7 @@
   qt.enable = true;
   qt.style.name = "adwaita-dark";
 
-  home.stateVersion = "25.11";
+  # Home Manager 26.05 与 NixOS 26.11pre 的版本线独立维护。
+  home.enableNixpkgsReleaseCheck = false;
+  home.stateVersion = "26.05";
 }

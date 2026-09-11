@@ -24,7 +24,7 @@ cursor {
 // ================ 背景墙纸与概览 (Noctalia) ================
 // 设置常规墙纸在背景层
 layer-rule {
-    match namespace="^noctalia-wallpaper*"
+    match namespace="^noctalia-wallpaper"
     place-within-backdrop true
 }
 
@@ -36,7 +36,7 @@ overview {
 }
 
 // ================ 启动时自动运行的程序 ================
-spawn-at-startup  "noctalia-shell"
+spawn-at-startup "noctalia" "--daemon"
 
 // ================ 环境变量设置 ================
 environment {

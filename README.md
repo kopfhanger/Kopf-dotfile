@@ -22,17 +22,17 @@
 | ------------ | --------------------------------------------------------- |
 | `niri_arch/` | **当前主力** — Niri 配置 (Arch Linux + Noctalia 适配版)   |
 | `niri_nix/`  | Niri 配置 (NixOS 版，存档)                                |
-| `hyprland/`  | **储备** — Hyprland 配置 (模块化，含全套动画/装饰/键绑定) |
+| `misc/hyprland/`  | **储备** — Hyprland 配置 (模块化，含全套动画/装饰/键绑定) |
 
 ### 终端
 
 | 目录         | 说明                                          |
 | ------------ | --------------------------------------------- |
 | `foot/`      | **主力终端** — CPU 渲染，轻量快速                 |
-| `ghostty/`   | 备选终端 — GPU 加速，配置自 foot 迁移 |
-| `wezterm/`   | 备选终端 — GPU 加速，Lua 配置，支持连字            |
-| `kitty/`     | 备选终端 — 含 kitty-themes 主题包                 |
-| `alacritty/` | 备选终端 — OpenGL 加速                            |
+| `misc/ghostty/`   | 备选终端 — GPU 加速，配置自 foot 迁移 |
+| `misc/wezterm/`   | 备选终端 — GPU 加速，Lua 配置，支持连字            |
+| `misc/kitty/`     | 备选终端 — 含 kitty-themes 主题包                 |
+| `misc/alacritty/` | 备选终端 — OpenGL 加速                            |
 
 ### 主题与外观
 
@@ -41,7 +41,7 @@
 | `noctalia/`    | **Noctalia v5** TOML 配置 (独立二进制，非 quickshell) |
 | `fastfetch/`  | 系统信息展示 (带自定义 ASCII logo)            |
 | `fontconfig/` | 字体渲染配置                                  |
-| `waybar/`     | 状态栏 (Hyprland 用，Niri 下由 Noctalia bar 代替)  |
+| `misc/hyprland/waybar/` | 状态栏 (Hyprland 用，Niri 下由 Noctalia bar 代替)  |
 
 ### Shell
 
@@ -61,16 +61,16 @@
 | 目录                | 说明                    |
 | ------------------- | ----------------------- |
 | `btop/`             | 系统资源监控            |
-| `cava/`             | 终端音频可视化          |
-| `mpd/` + `ncmpcpp/` | 音乐播放服务端 + 客户端 |
-| `mpv/`              | 视频播放器配置          |
+| `misc/cava/`             | 终端音频可视化          |
+| `misc/mpd/` + `misc/ncmpcpp/` | 音乐播放服务端 + 客户端 |
+| `misc/mpv/`              | 视频播放器配置          |
 | `swappy/`           | 截图编辑工具            |
 
 ### 其他
 
 | 目录          | 说明                            |
 | ------------- | ------------------------------- |
-| `noctalia_v4/` | Noctalia v4 配置存档 (JSON/QML，待 v5 稳定后清除) |
+| `misc/noctalia_v4/` | Noctalia v4 配置存档 (JSON/QML，待 v5 稳定后清除) |
 | `nixos/`      | NixOS 配置 (flake 模块化，已存档) |
 
 ## 🔧 快速部署
@@ -93,7 +93,7 @@
     ln -sfn ~/workspace/Kopf-dotfile/noctalia   ~/.config/noctalia
 
     # 终端
-    ln -sfn ~/workspace/Kopf-dotfile/ghostty    ~/.config/ghostty
+    ln -sfn ~/workspace/Kopf-dotfile/misc/ghostty    ~/.config/ghostty
     ln -sfn ~/workspace/Kopf-dotfile/foot       ~/.config/foot
 
     # Shell
@@ -109,7 +109,7 @@
     ln -sfn ~/workspace/Kopf-dotfile/swappy     ~/.config/swappy
 
     # Hyprland（如果使用）
-    ln -sfn ~/workspace/Kopf-dotfile/hyprland   ~/.config/hypr
+    ln -sfn ~/workspace/Kopf-dotfile/misc/hyprland   ~/.config/hypr
     ```
 
 3. **安装必要依赖**
@@ -132,6 +132,6 @@
 
 ## 📝 备注
 
-- `niri_arch/` 是当前活跃的 WM 配置，`hyprland/` 作为储备保留
-- `noctalia/` 是 v5 配置 (TOML 格式)，旧版 v4 JSON 配置已存档于 `noctalia_v4/`
+- `niri_arch/` 是当前活跃的 WM 配置，`misc/hyprland/` 作为储备保留
+- `noctalia/` 是 v5 配置 (TOML 格式)，旧版 v4 JSON 配置已存档于 `misc/noctalia_v4/`
 - 所有配置文件的注释均中文化，方便查阅

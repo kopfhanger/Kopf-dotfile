@@ -1,5 +1,7 @@
-# Fish shell - 自动生成的临时/备份变量文件
-fish/fish_variables.*
+# Fish shell - 自动生成的 universal variables 和临时/备份文件
+# fish_variables 是运行时状态，不应随配置仓库同步；?* 覆盖 Fish 的随机临时文件名。
+fish/fish_variables
+fish/fish_variables?*
 fish/fishd.tmp.*
 
 # 编辑器/备份文件
@@ -10,6 +12,9 @@ fish/fishd.tmp.*
 
 # 数据库文件
 *.db
+
+# MPD 运行时状态
+misc/mpd/mpdstate
 rio/.ferrite/
 
 .reasonix

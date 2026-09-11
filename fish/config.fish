@@ -20,11 +20,25 @@ set -gx GLFW_IM_MODULE ibus  # 某些游戏可能需要这个
 set -gx BROWSER zen-browser
 
 # Created by `pipx` on 2025-12-21 06:21:35
-set PATH $PATH /home/kopfhanger/.local/bin
+# fish_add_path 会去重，且使用 $HOME 便于在其他主机复用配置。
+fish_add_path --append --move "$HOME/.local/bin"
 
-set -x PYTHONPATH /usr/local/lib/python3.14/site-packages $PYTHONPATH
-set -x PYTHONPATH /usr/local/share/chrono/python $PYTHONPATH
-set -x LD_LIBRARY_PATH /usr/local/lib $LD_LIBRARY_PATH
+# 仅注入实际存在的本地 Python/动态库目录，避免污染所有 shell 会话。
+for python_path in /usr/local/lib/python3.14/site-packages /usr/local/share/chrono/python
+    if test -d "$python_path"; and not contains -- "$python_path" $PYTHONPATH
+        set -a PYTHONPATH "$python_path"
+    end
+end
+if test (count $PYTHONPATH) -gt 0
+    set -gx PYTHONPATH $PYTHONPATH
+end
+
+if test -d /usr/local/lib; and not contains -- /usr/local/lib $LD_LIBRARY_PATH
+    set -a LD_LIBRARY_PATH /usr/local/lib
+end
+if test (count $LD_LIBRARY_PATH) -gt 0
+    set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH
+end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

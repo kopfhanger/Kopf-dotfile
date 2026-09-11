@@ -8,7 +8,6 @@ default_model = "deepseek-flash"
 # language      = "zh"   # ui/model language; empty = auto-detect from $LANG / $REASONIX_LANG
 
 [agent]
-cold_resume_prune = true
 plan_mode_read_only_commands = ["pacman -Qo", "pacman -Ql", "noctalia --help", "noctalia config --help", "noctalia --version"]
 
 [tools]

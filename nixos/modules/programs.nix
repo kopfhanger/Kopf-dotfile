@@ -12,7 +12,7 @@
 
  programs.fish.enable = true;
  programs.nix-ld.enable = true;
- programs.thunar.enable = true;
+ # programs.thunar.enable = true;
  programs.zoxide.enable = true;     # z 跳转
  programs.neovim.enable = true;     # 终端文本编辑器
  programs.yazi.enable = true;       # 终端文件管理器
@@ -20,7 +20,7 @@
    enable = true;
    terminal = "foot";
  };
- programs.steam.enable = true;      # steam
+ # programs.steam.enable = true;      # steam
 
  programs.thunar.plugins = with pkgs; [
    thunar-archive-plugin

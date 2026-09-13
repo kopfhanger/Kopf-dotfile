@@ -1,37 +1,37 @@
 {
   description = "NixOS 26.11pre 配置：GDM、GNOME、Niri 与 Noctalia v5";
 
-  inputs = {
-    # nixos-unstable 当前为 NixOS 26.11pre 开发线；官方 tarball 便于在受限网络中更新。
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
+inputs = {
+  # 如果 nixpkgs 也慢，可换成清华/南大镜像：
+  # nixpkgs.url = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz";
+  # nixpkgs.url = "https://mirror.nju.edu.cn/nix-channels/nixos-unstable/nixexprs.tar.xz";
+  nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
 
-    noctalia = {
-      # v5 已迁移到独立仓库，不再依赖 quickshell/noctalia-shell。
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zen-browser = {
-     url = "github:youwen5/zen-browser-flake";
-     inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-grub-themes = {
-      url = "github:jeslie0/nixos-grub-themes";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager = {
-      # Home Manager 的稳定发布线目前是 26.05；它可以与 NixOS 26.11pre 共存。
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-wpsoffice-cn = {
-      url = "github:Beriholic/nix-wpsoffice-cn";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+  noctalia = {
+    url = "git+https://gh.dpik.top/https://github.com/noctalia-dev/noctalia.git?shallow=1";
+    inputs.nixpkgs.follows = "nixpkgs";
   };
+
+  zen-browser = {
+    url = "git+https://gh.dpik.top/https://github.com/youwen5/zen-browser-flake.git?shallow=1";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  nixos-grub-themes = {
+    url = "git+https://gh.dpik.top/https://github.com/jeslie0/nixos-grub-themes.git?shallow=1";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  home-manager = {
+    url = "git+https://gh.dpik.top/https://github.com/nix-community/home-manager.git?ref=release-26.05&shallow=1";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  nix-wpsoffice-cn = {
+    url = "git+https://gh.dpik.top/https://github.com/Beriholic/nix-wpsoffice-cn.git?shallow=1";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+};
 
   outputs = inputs@{ nixpkgs, zen-browser, home-manager, ... }:
   let

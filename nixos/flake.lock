@@ -25,18 +25,19 @@
         ]
       },
       "locked": {
-        "lastModified": 1785119570,
-        "narHash": "sha256-Rgs2xKnGLFWQscxUaXX07oyZeuMDOHEbqDOsgliLFGM=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "d4fd24667c8cbef124bb70a20380cab75ec8474d",
-        "type": "github"
+        "lastModified": 1789182507,
+        "narHash": "sha256-9nt4W0HNNP84B+b37yRs9Zxat1ZR5guJxEZDEjAgex4=",
+        "ref": "release-26.05",
+        "rev": "b1d1b60084970f9d1e2b72662639dab6d039be71",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/nix-community/home-manager.git"
       },
       "original": {
-        "owner": "nix-community",
         "ref": "release-26.05",
-        "repo": "home-manager",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/nix-community/home-manager.git"
       }
     },
     "nix-wpsoffice-cn": {
@@ -49,15 +50,16 @@
       "locked": {
         "lastModified": 1749822003,
         "narHash": "sha256-sCCF84iX5oqpHtublaaOkK1AV2x1igKJBRsUcLOIfiU=",
-        "owner": "Beriholic",
-        "repo": "nix-wpsoffice-cn",
+        "ref": "refs/heads/main",
         "rev": "2a4e1644761b7060b447247bfa08fa2e966abe63",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/Beriholic/nix-wpsoffice-cn.git"
       },
       "original": {
-        "owner": "Beriholic",
-        "repo": "nix-wpsoffice-cn",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/Beriholic/nix-wpsoffice-cn.git"
       }
     },
     "nixos-grub-themes": {
@@ -67,26 +69,27 @@
         ]
       },
       "locked": {
-        "lastModified": 1769794759,
-        "narHash": "sha256-1doG74WkbtUpawduk9f8szyzWsw3Liblrh2z+2jQnw4=",
-        "owner": "jeslie0",
-        "repo": "nixos-grub-themes",
-        "rev": "5e75f9b3ea9061dca6c53d34e166e08bf9ebc7c7",
-        "type": "github"
+        "lastModified": 1781846278,
+        "narHash": "sha256-FKKfJZnw32Kz5pHmjflb1piJ1dgRjtimQOBiWeAn4DE=",
+        "ref": "refs/heads/main",
+        "rev": "da7497bdcfbfd55a6279559e2d9af812f511073b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/jeslie0/nixos-grub-themes.git"
       },
       "original": {
-        "owner": "jeslie0",
-        "repo": "nixos-grub-themes",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/jeslie0/nixos-grub-themes.git"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1788614874,
-        "narHash": "sha256-PRK1fSEiAcO29DkUoOlsVLGYRK3h1YKVr+qQJB0VcYQ=",
-        "rev": "c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0",
+        "lastModified": 1789006805,
+        "narHash": "sha256-q+GdZ3yq4Y2LXHRK0vKTM32Hwy7RCgUgy+hjwZLI5pY=",
+        "rev": "8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1068089.c043004d1c69/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1070770.8ce4ef6cb6f8/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
@@ -100,17 +103,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1786967249,
-        "narHash": "sha256-JOrKQpfSG7/VkgtVTBEKkJuhiZya3utxXUEXGAQ94P8=",
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "rev": "b10dd5529ba1e386826f377ff39a7f0339e8de54",
-        "type": "github"
+        "lastModified": 1789176111,
+        "narHash": "sha256-yMDcKnbjtinVb+1B/gnxGtQ1IUhUcHyIE4jHvUm/KT0=",
+        "ref": "refs/heads/main",
+        "rev": "9f35ead435feaa3cc6bcfc6585433abc9ae4db17",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/noctalia-dev/noctalia.git"
       },
       "original": {
-        "owner": "noctalia-dev",
-        "repo": "noctalia",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/noctalia-dev/noctalia.git"
       }
     },
     "root": {
@@ -145,17 +149,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1773290160,
-        "narHash": "sha256-u09eF4Oafi+OIbTtKe/EWil26q1glcTATiSA7dF1oCI=",
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
-        "rev": "c7cb51b30960757ed9fb8eb28567b32585d0a688",
-        "type": "github"
+        "lastModified": 1788682845,
+        "narHash": "sha256-E03KyK0Sj+ia+FSy47XC4v9enU1C/lGiW5ZKmcJoI1M=",
+        "ref": "refs/heads/master",
+        "rev": "3aadc420e763a8243aedd2ce925ae1dc13663ed9",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/youwen5/zen-browser-flake.git"
       },
       "original": {
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/youwen5/zen-browser-flake.git"
       }
     }
   },

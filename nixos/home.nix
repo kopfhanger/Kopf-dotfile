@@ -19,50 +19,50 @@
     appimage-run      # AppImage运行器
     nautilus          # 文件管理器
     code-nautilus     # 在此打开code
-    qq                # qq
+    #qq                # qq
     swaylock          # 锁屏
     evince            # 文档查看器
-    obsidian          # 笔记管理软件
-    thunderbird       # 邮件
-    drawio            # 绘图工具
-    texliveFull       # latex
+    # obsidian          # 笔记管理软件
+    #thunderbird       # 邮件
+    #drawio            # 绘图工具
+    # texliveFull       # latex
     vlc               # 媒体播放器
     thonny            # python开发环境
-    typora            # markdown编辑器
+    #typora            # markdown编辑器
     loupe             # 屏幕缩放工具
-    listen1
+    # listen1
     conda
     python3           # 编程
     python3Packages.pip # 包管理
     gnuplot
     ocrmypdf
     jujutsu
-    texstudio
-    kazumi
-    telegram-desktop
+    # texstudio
+    # kazumi
+    # telegram-desktop
     gimp
     qbittorrent
-    mission-center
-    inkscape
-    blender
-    libreoffice-fresh
-    lutris
-    protonplus
-    umu-launcher
+    # mission-center
+    # inkscape
+    # blender
+    # libreoffice-fresh
+    # lutris
+    # protonplus
+    # umu-launcher
     nix-output-monitor
     freefilesync
-    microsoft-edge
-    google-chrome
-    bazaar
-    obs-studio
-    zotero
-    xournalpp
-    wpsoffice-cn
+    # microsoft-edge
+    # google-chrome
+    # bazaar
+    # obs-studio
+    # zotero
+    # xournalpp
+    # wpsoffice-cn
     pdfarranger
-    freecad
-    julia
-    paraview
-    wechat
+    # freecad
+    # julia
+    # paraview
+    # wechat
     zola
   ];
 
@@ -73,7 +73,7 @@
    flake = "/etc/nixos/"; # 为您设置 NH_OS_FLAKE 环境变量
   };
 
-  programs.vscode.enable = true;    # 代码编辑器
+  # programs.vscode.enable = true;    # 代码编辑器
   programs.foot.enable = true;      # 终端
   programs.satty.enable = true;
 

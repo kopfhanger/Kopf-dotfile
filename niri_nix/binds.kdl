@@ -4,7 +4,7 @@ binds {
     Mod+Return hotkey-overlay-title="打开 (Foot)" { spawn "foot"; }
     Mod+T hotkey-overlay-title="打开 (Ghostty)" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Fuzzel" { spawn-sh "fuzzel --config ~/.config/fuzzel/themes/noctalia"; }
-    Mod+B hotkey-overlay-title="zen-browser" { spawn "zen-browser"; }
+    Mod+B hotkey-overlay-title="zen-browser" { spawn "zen"; }
     Mod+N hotkey-overlay-title="nautilus" { spawn "nautilus"; }
     Alt+J hotkey-overlay-title="区域截图" { spawn-sh "grim -g \"$(slurp)\" - | satty -f - --initial-tool=line --copy-command=wl-copy --actions-on-escape save-to-clipboard,exit --brush-smooth-history-size=5 --output-filename ~/$(date '+%Y%m%d-%H:%M:%S').png"; }
 

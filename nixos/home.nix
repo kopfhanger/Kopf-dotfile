@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  # Home Manager 现在自带 programs.noctalia 模块，会和下面通过
+  # home-manager.sharedModules 引入的 noctalia 官方模块重复声明同名选项。
+  # noctalia 官方模块其实已经写了 disabledModules，但写的是
+  # "programs/noctalia.nix"，而 HM 是按目录 ./programs/noctalia 注册的
+  # （key 不含 .nix），因此匹配不上。这里补上正确的相对路径。
+  disabledModules = [ "programs/noctalia" ];
+
   home.username = "kopfhanger";
   home.homeDirectory = "/home/kopfhanger";
 
@@ -19,16 +26,16 @@
     appimage-run      # AppImage运行器
     nautilus          # 文件管理器
     code-nautilus     # 在此打开code
-    #qq                # qq
+    qq                # qq
     swaylock          # 锁屏
     evince            # 文档查看器
     # obsidian          # 笔记管理软件
-    #thunderbird       # 邮件
-    #drawio            # 绘图工具
-    # texliveFull       # latex
+    thunderbird       # 邮件
+    # drawio            # 绘图工具
+    texliveFull       # latex
     vlc               # 媒体播放器
     thonny            # python开发环境
-    #typora            # markdown编辑器
+    # typora            # markdown编辑器
     loupe             # 屏幕缩放工具
     # listen1
     conda
@@ -36,34 +43,43 @@
     python3Packages.pip # 包管理
     gnuplot
     ocrmypdf
-    jujutsu
-    # texstudio
+    # jujutsu
+    texstudio
     # kazumi
     # telegram-desktop
     gimp
     qbittorrent
-    # mission-center
-    # inkscape
-    # blender
-    # libreoffice-fresh
+    mission-center
+    inkscape
+    blender
+    libreoffice-stable
     # lutris
     # protonplus
     # umu-launcher
     nix-output-monitor
     freefilesync
-    # microsoft-edge
-    # google-chrome
-    # bazaar
-    # obs-studio
+    microsoft-edge
+    google-chrome
+    obs-studio
     # zotero
     # xournalpp
-    # wpsoffice-cn
+    wpsoffice-cn
     pdfarranger
     # freecad
-    # julia
+    julia
     # paraview
-    # wechat
+    wechat-uos
     zola
+    gh
+    rio
+    spotify
+    zathura
+    tinymist
+    typst
+    wechat-uos
+
+    # Tolaria：Markdown 知识库桌面应用（官方 AppImage 包装，定义见 ./pkgs/tolaria.nix）
+    (pkgs.callPackage ./pkgs/tolaria.nix { })
   ];
 
   programs.nh = {
@@ -114,6 +130,7 @@
   qt.enable = true;
   qt.style.name = "adwaita-dark";
 
+  # home.backupFileExtension = "bak";
   # Home Manager 26.05 与 NixOS 26.11pre 的版本线独立维护。
   home.enableNixpkgsReleaseCheck = false;
   home.stateVersion = "26.05";

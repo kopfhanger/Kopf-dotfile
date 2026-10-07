@@ -1,8 +1,49 @@
 {
   "nodes": {
+    "deepseek-harness": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs",
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1791236005,
+        "narHash": "sha256-TYWbSSMU6Z0HhP9hjBEl6xppBa2fqDtDWKOP51ydtb0=",
+        "ref": "refs/heads/main",
+        "rev": "b66eb7b375b646600d183e0a59f38839d2e8ea9b",
+        "revCount": 910,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/moraxyc/deepseek-harness.nix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/moraxyc/deepseek-harness.nix"
+      }
+    },
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "deepseek-harness",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790898470,
+        "narHash": "sha256-zTwuwezD0w3hpga6a6P8emidzAZFyWqlNeRBlpWOOl8=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "024633cd702b10285db5cb19b40ad48d2399ba60",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -25,16 +66,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1789182507,
-        "narHash": "sha256-9nt4W0HNNP84B+b37yRs9Zxat1ZR5guJxEZDEjAgex4=",
-        "ref": "release-26.05",
-        "rev": "b1d1b60084970f9d1e2b72662639dab6d039be71",
+        "lastModified": 1791227480,
+        "narHash": "sha256-+lrD+sxc2RKUWXRBAcggn7uBCFeJgnV75jD/cz7gJRA=",
+        "ref": "master",
+        "rev": "aa23f720d022187228bc264f759aef6b80233bcf",
         "shallow": true,
         "type": "git",
         "url": "https://gh.dpik.top/https://github.com/nix-community/home-manager.git"
       },
       "original": {
-        "ref": "release-26.05",
+        "ref": "master",
         "shallow": true,
         "type": "git",
         "url": "https://gh.dpik.top/https://github.com/nix-community/home-manager.git"
@@ -62,6 +103,28 @@
         "url": "https://gh.dpik.top/https://github.com/Beriholic/nix-wpsoffice-cn.git"
       }
     },
+    "nixos-chatgpt": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789039487,
+        "narHash": "sha256-27JmTIBo6G5Vy/LN3XCf2T5GosCPzjWdP8xnWuKT3Gc=",
+        "ref": "refs/heads/main",
+        "rev": "aa0e882c29b3080f1ba72f12749f3ee472dc6901",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/csoftware-arigpt/nixos-chatgpt.git"
+      },
+      "original": {
+        "rev": "aa0e882c29b3080f1ba72f12749f3ee472dc6901",
+        "shallow": true,
+        "type": "git",
+        "url": "https://gh.dpik.top/https://github.com/csoftware-arigpt/nixos-chatgpt.git"
+      }
+    },
     "nixos-grub-themes": {
       "inputs": {
         "nixpkgs": [
@@ -85,11 +148,27 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1789006805,
-        "narHash": "sha256-q+GdZ3yq4Y2LXHRK0vKTM32Hwy7RCgUgy+hjwZLI5pY=",
-        "rev": "8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe",
+        "lastModified": 1790769526,
+        "narHash": "sha256-5AIVFLRcx8YAwbFTVPTs7YhwJH7JyHfAQsvXmpovcXI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c9fe7d12cd78d1adcd12dd15e24432dde5b155a0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1791260994,
+        "narHash": "sha256-MFBjw66d4h06MvpW6lIl7RwarLteD0sk859CncGwb1Q=",
+        "rev": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1070770.8ce4ef6cb6f8/nixexprs.tar.zst"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1086391.151fa4e8ddfd/nixexprs.tar.zst"
       },
       "original": {
         "type": "tarball",
@@ -103,10 +182,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1789176111,
-        "narHash": "sha256-yMDcKnbjtinVb+1B/gnxGtQ1IUhUcHyIE4jHvUm/KT0=",
+        "lastModified": 1791232579,
+        "narHash": "sha256-w41WEK3y1U2FMf/01iyYHJg1zbskNWEC588/8pK307c=",
         "ref": "refs/heads/main",
-        "rev": "9f35ead435feaa3cc6bcfc6585433abc9ae4db17",
+        "rev": "4da7a84135070f92333968be9d1486edb7cf8e2b",
         "shallow": true,
         "type": "git",
         "url": "https://gh.dpik.top/https://github.com/noctalia-dev/noctalia.git"
@@ -119,15 +198,32 @@
     },
     "root": {
       "inputs": {
+        "deepseek-harness": "deepseek-harness",
         "home-manager": "home-manager",
         "nix-wpsoffice-cn": "nix-wpsoffice-cn",
+        "nixos-chatgpt": "nixos-chatgpt",
         "nixos-grub-themes": "nixos-grub-themes",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
         "zen-browser": "zen-browser"
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1776166891,
+        "narHash": "sha256-bI8yrEGjrohR5hkQox7UrxDH7XqrYMwI8SL/LrJ1+S8=",
+        "owner": "nix-systems",
+        "repo": "triplet",
+        "rev": "6de7bc09397911ce03636afbcf6118745ab2cda0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "triplet",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
@@ -149,10 +245,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1788682845,
-        "narHash": "sha256-E03KyK0Sj+ia+FSy47XC4v9enU1C/lGiW5ZKmcJoI1M=",
+        "lastModified": 1791109428,
+        "narHash": "sha256-9Wlecihq1JF26Le4xw1q75pQ4z0Pw88rRmUjeHzQXjY=",
         "ref": "refs/heads/master",
-        "rev": "3aadc420e763a8243aedd2ce925ae1dc13663ed9",
+        "rev": "4bbcd79d8104040a2e510f81199210070900ebcd",
         "shallow": true,
         "type": "git",
         "url": "https://gh.dpik.top/https://github.com/youwen5/zen-browser-flake.git"

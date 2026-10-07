@@ -10,7 +10,6 @@
   # 系统级包已统一到 configuration.nix 的 environment.systemPackages
   # 此处仅保留程序启用配置
 
- programs.fish.enable = true;
  programs.nix-ld.enable = true;
  # programs.thunar.enable = true;
  programs.zoxide.enable = true;     # z 跳转
@@ -20,7 +19,22 @@
    enable = true;
    terminal = "foot";
  };
- # programs.steam.enable = true;      # steam
+ programs.steam.enable = true;      # steam
+
+ programs.fish = {
+  enable = true;
+  promptInit = ''
+    if not set -q __fish_datadir
+      set -l fish_bin (status fish-path)
+      set -l prefix (dirname (dirname $fish_bin))
+      if test -d $prefix/etc/fish
+        set -g __fish_datadir $prefix/etc/fish
+      else if test -d $prefix/share/fish
+        set -g __fish_datadir $prefix/share/fish
+      end
+    end
+  '';
+};
 
  programs.thunar.plugins = with pkgs; [
    thunar-archive-plugin

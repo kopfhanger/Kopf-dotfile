@@ -17,4 +17,7 @@ fish/fishd.tmp.*
 misc/mpd/mpdstate
 rio/.ferrite/
 
+# Noctalia 自动导出的运行时配置；Nix 引用的是已跟踪的 noctalia/config.toml
+noctalia/noctalia-config.toml
+
 .reasonix

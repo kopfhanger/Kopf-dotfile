@@ -1,12 +1,18 @@
 // ================ 显示输出配置 ================
-output "DP-1" {
-    mode "3840x2160@60"  // 4K 60Hz显示器
-    scale 1.25               // 125%缩放
-    position x=0 y=0      // 主显示器位置
-}
+// output "DP-1" {
+//     mode "3840x2160@60"  // 4K 60Hz显示器
+//     scale 1.25               // 125%缩放
+//     position x=0 y=0      // 主显示器位置
+// }
 
-output "HDMI-A-1" {
-    mode "3840x2160@60"  // 4K 60Hz显示器
+// output "HDMI-A-1" {
+//     mode "3840x2160@60"  // 4K 60Hz显示器
+//     scale 1.25               // 125%缩放
+//     position x=-3072 y=0   // 位于主显示器左侧
+// }
+
+output "eDP-1" {
+    mode "2560x1600@120"  // 4K 60Hz显示器
     scale 1.25               // 125%缩放
-    position x=-3072 y=0   // 位于主显示器左侧
+    position x=0 y=0   // 位于主显示器左侧
 }

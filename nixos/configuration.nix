@@ -125,6 +125,7 @@
     efibootmgr
     grub2
     # 系统级工具
+    p7zip
     fastfetch
     btop
     fzf
@@ -179,7 +180,29 @@
       "https://cache.nixos.org/"
     ];
     experimental-features = [ "nix-command" "flakes" ];
+
+    # noctalia 是 C++/Qt(meson+ninja) 项目，编译峰值内存很高。之前 max-jobs=16
+    # （=16 线程全开）配 0 swap，内核 OOM killer 连着把 foot 终端 scope 里的进程
+    # 杀掉，表现就是"编译时终端闪退"。这里限制并发编译进程数（≈max-jobs×cores）：
+    # 想更快可以把 cores 提到 4，想更稳就降到 1。
+    max-jobs = 4;
+    cores = 2;
   };
+
+  # 编译峰值内存保护：zram 用压缩内存当快速 swap，再加一个磁盘 swapfile 兜底。
+  # btrfs 上由 nixpkgs 自动改用 `btrfs filesystem mkswapfile` 生成 nocow swapfile，
+  # 并按文件大小判断是否已存在（幂等，不会每次开机重建）。
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024; # MiB = 16 GiB
+    }
+  ];
 
   # 一些程序需要 SUID 包装器，可以进一步配置或在用户会话中启动。
   # programs.mtr.enable = true;
@@ -191,6 +214,7 @@
    enable = true;
    binfmt = true;
   };
+  programs.dsh.enable = true;
 
   security.polkit.enable = true;
   security.soteria.enable = true;
